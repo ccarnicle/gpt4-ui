@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import CircularProgress from '@mui/material/CircularProgress';
+import Link from 'next/link'
 
 export default function Home() {
 
@@ -91,7 +92,7 @@ export default function Home() {
       </Head>
       <div className={styles.topnav}>
         <div className={styles.navlogo}>
-          <a href="/">GPT-4 Chat UI</a>
+          <Link href="/">GPT-4 Chat UI</Link>
         </div>
         <div className={styles.navlinks}>
           <a href="https://platform.openai.com/docs/models/gpt-4" target="_blank">Docs</a>
