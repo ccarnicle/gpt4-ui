@@ -49,8 +49,8 @@ export default function Home() {
 
     // Send chat history to API
     const response = 
-    await fetch("https://gpt4ui-2122ada8a336.herokuapp.com/api/gpt-data", { //for prod
-    //await fetch("/api/chat", { // on localhost
+    //await fetch("https://gpt4ui-2122ada8a336.herokuapp.com/api/gpt-data", { //for prod
+    await fetch("/api/chat", { // on localhost
     method: "POST",
       headers: {
         "Content-Type": "application/json",
