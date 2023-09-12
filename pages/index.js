@@ -48,8 +48,10 @@ export default function Home() {
     setMessages(context);
 
     // Send chat history to API
-    const response = await fetch("https://gpt4ui-2122ada8a336.herokuapp.com/api/gpt-data", { //change this back to api/chat
-      method: "POST",
+    const response = 
+    await fetch("https://gpt4ui-2122ada8a336.herokuapp.com/api/gpt-data", { //for prod
+    //await fetch("/api/chat", { // on localhost
+    method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -127,7 +129,7 @@ export default function Home() {
                 ref={textAreaRef}
                 autoFocus={false}
                 rows={1}
-                maxLength={1524}
+                maxLength={30000}
                 type="text"
                 id="userInput"
                 name="userInput"
