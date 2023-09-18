@@ -1,7 +1,7 @@
 // Make sure to add OPENAI_API_KEY as a secret
 
 import { Configuration, OpenAIApi } from "openai";
-import { resumeData } from "../constants";
+import { resumeData } from "../../lib/constants";
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY; // Replace with your actual API key
 
