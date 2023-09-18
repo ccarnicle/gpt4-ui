@@ -1,4 +1,4 @@
-export const resumeData = `Christopher Carnicle's Resume:
+export default resumeData = `Christopher Carnicle's Resume:
 
       [Title] Christopher Carnicle Resume
       [SECTION] EXPERIENCE
