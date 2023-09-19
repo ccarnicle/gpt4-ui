@@ -18,10 +18,8 @@ import { MemoryVectorStore } from "langchain/vectorstores/memory";
 //import { RetrievalQAChain } from "langchain/chains";
 import { PromptTemplate } from "langchain/prompts";
 
-const data = resumeDocs
-
 const textSplitter = new RecursiveCharacterTextSplitter({
-  chunkSize: 500,
+  chunkSize: 1000,
   chunkOverlap: 0,
 });
 
@@ -56,17 +54,19 @@ export default async function getChat(req, res) {
   const chat = new ChatOpenAI({ temperature: 0 });
 
   //vector store
-  const splitDocs = await textSplitter.splitDocuments(data);
+  const splitDocs = await textSplitter.splitDocuments(resumeDocs);
+
+  console.log(splitDocs)
 
   const embeddings = new OpenAIEmbeddings();
 
   const vectorStore = await MemoryVectorStore.fromDocuments(splitDocs, embeddings);
 
-  const promptTemplate = `Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer. Talk like a pirate.
+  const promptTemplate = `Use Christopher Carnicle's Resume to create a compelling cover letter for the job posting at the end. Clearly show how his professional experience fit the requirements of the open role. Keep it concise (2-3 paragraphs). Use Christopher Carnicle's example cover letters as a guide for length and tonality but do not copy the text or company names.
 
     {context}
 
-    Question: {question}`;
+    Job Posting: {question}`;
     
     const prompt = PromptTemplate.fromTemplate(promptTemplate)
 
@@ -86,7 +86,7 @@ export default async function getChat(req, res) {
     query: userMsg
   });
 
-  console.log(response);
+  //console.log(response);
 
 
   //console.log(req.body.messages)
